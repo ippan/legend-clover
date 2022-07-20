@@ -1,0 +1,17 @@
+
+model Game
+end
+
+implement Game
+    function update(this, delta)
+    end
+
+    function render(this, delta)
+    end
+end
+
+function main()
+    local game = Game()
+
+    game
+end

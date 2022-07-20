@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "crates/legend-engine",
+    "crates/legend-clover"
+]
+
+resolver="2"
