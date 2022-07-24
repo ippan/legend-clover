@@ -1,17 +1,38 @@
+include Title from "./game_states/title.luck"
+
+model GameStates
+    title
+end
+
+implement GameStates
+    function new()
+        local title = Title()
+
+        GameStates(title)
+    end
+end
 
 model Game
+    game_states
+    current_game_state_name
 end
 
 implement Game
     function update(this, delta)
+        local current_state = this.game_states[this.current_game_state_name]
+        current_state.update(delta)
     end
 
     function render(this, delta)
+        local current_state = this.game_states[this.current_game_state_name]
+        current_state.render(delta)
     end
 end
 
 function main()
-    local game = Game()
+    local game = Game(GameStates.new(), "title")
+
+    game.game_states[game.current_game_state_name].enter()
 
     game
 end

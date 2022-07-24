@@ -796,6 +796,8 @@ name = "legend-engine"
 version = "0.0.1"
 dependencies = [
  "byteorder",
+ "clover",
+ "clover-std",
  "image",
 ]
 

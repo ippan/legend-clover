@@ -1,0 +1,15 @@
+public model Title
+end
+
+implement Title
+
+    function enter(this)
+
+    end
+
+    function update(this, delta)
+    end
+
+    function render(this, delta)
+    end
+end

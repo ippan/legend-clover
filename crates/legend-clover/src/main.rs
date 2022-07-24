@@ -4,6 +4,7 @@ use std::process::exit;
 use clap::Parser;
 use pixels::{Pixels, SurfaceTexture};
 use clover::{Clover, Object, Program, State};
+use clover::helper::make_reference;
 use clover_std::clover_std_inject_to;
 
 use winit::{
@@ -12,7 +13,7 @@ use winit::{
     dpi::LogicalSize,
     window::WindowBuilder,
 };
-use legend_engine::engine::graphics::Graphics;
+use legend_engine::engine::graphics::{Color, Graphics};
 
 const WIDTH: u32 = 320;
 const HEIGHT: u32 = 200;
@@ -36,6 +37,8 @@ fn init_script() -> Result<(State, Object, Object), Box<dyn Error>> {
 
     let mut state: State = program.into();
     clover_std_inject_to(&mut state);
+
+    state.add_native_model("Color", make_reference(Color::new(0, 0, 0, 0)));
 
     let game = state.execute()?;
     let update_function = state.get_object_property_by_name(game.clone(), "update")?;
